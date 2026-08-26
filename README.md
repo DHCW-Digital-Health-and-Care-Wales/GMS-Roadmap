@@ -85,6 +85,9 @@ npm run format   # format with Prettier
 
 The site deploys to GitHub Pages from `main` via the workflow in
 [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml). The Vite base
+path defaults to `./` for local builds and is set from the repository's GitHub
+Pages configuration during the Actions build, so deployed asset URLs match the
+current Pages site path.
 path is set to `./` (relative), so built asset URLs resolve relative to
 `index.html` wherever the site is served — both the GitHub Pages project site
 (`…github.io/GMS-Roadmap/`) and any other host or fork root.
