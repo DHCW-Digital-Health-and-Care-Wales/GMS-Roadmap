@@ -17,5 +17,7 @@ const base =
 
 export default defineConfig({
   base,
+export default defineConfig({
+  base: '/GMS-Roadmap/',
   plugins: [react()],
 });

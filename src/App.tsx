@@ -61,6 +61,9 @@ export default function App() {
         {/* 6. Other work we have delivered this year — last roadmap content section */}
         <DeliveredSection section={roadmap.otherDelivered} />
 
+        {/* 7. Not doing right now */}
+        <DeliveredSection section={roadmap.notDoingNow} />
+
         <AccessibilityStatement />
         <PrivacyNote />
       </main>

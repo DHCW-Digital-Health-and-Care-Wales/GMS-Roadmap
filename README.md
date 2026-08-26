@@ -1,11 +1,11 @@
-# DHCW Vaccine Service roadmap
+# DHCW General Medical Services roadmap
 
-A public, accessible roadmap for the Vaccine Service at
+A public, accessible roadmap for the General Medical Services at
 [Digital Health and Care Wales (DHCW)](https://dhcw.nhs.wales/). It shows what
 we are working on now, what we expect to do next, and the direction we are
 setting for later.
 
-**Live site:** https://dhcw-digital-health-and-care-wales.github.io/dhcw-vaccine-roadmap/
+**Live site:** https://dhcw-digital-health-and-care-wales.github.io/GMS-Roadmap/
 
 > **Draft for discussion.** This roadmap shows direction and priorities, not
 > firm commitments. It carries no dates. Now is the firmest; Later is the most
@@ -38,7 +38,7 @@ roadmap, and Next and Later are not commitments to deliver by a particular time.
 ## Giving feedback
 
 This is built in the open and feedback is welcome. Please
-[open a roadmap feedback issue](https://github.com/DHCW-Digital-Health-and-Care-Wales/dhcw-vaccine-roadmap/issues/new?template=roadmap-feedback.md).
+[open a roadmap feedback issue](https://github.com/DHCW-Digital-Health-and-Care-Wales/GMS-Roadmap/issues/new?template=roadmap-feedback.md).
 
 ## How often it is updated
 
@@ -88,6 +88,9 @@ The site deploys to GitHub Pages from `main` via the workflow in
 path defaults to `./` for local builds and is set from the repository's GitHub
 Pages configuration during the Actions build, so deployed asset URLs match the
 current Pages site path.
+path is set to `./` (relative), so built asset URLs resolve relative to
+`index.html` wherever the site is served — both the GitHub Pages project site
+(`…github.io/GMS-Roadmap/`) and any other host or fork root.
 
 > **Repository setting required:** in **Settings -> Pages**, set the source to
 > **GitHub Actions** for deployments to run.
