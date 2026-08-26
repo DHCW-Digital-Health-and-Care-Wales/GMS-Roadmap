@@ -22,7 +22,7 @@ export const DEFAULT_LANGUAGE: Lang = 'en';
 export const LANG_PARAM = 'lang';
 
 /** Same-site storage key for remembering the choice without cookies. */
-export const LANG_STORAGE_KEY = 'dhcw-vaccine-roadmap-lang';
+export const LANG_STORAGE_KEY = 'gms-roadmap-lang';
 
 const missingWelsh = new Set<string>();
 
