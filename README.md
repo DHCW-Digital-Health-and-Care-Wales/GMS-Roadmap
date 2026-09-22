@@ -13,7 +13,7 @@ setting for later.
 
 ## Who it is for
 
-Anyone with an interest in vaccination services in Wales: the people who use
+Anyone with an interest in General Medical Services in Wales: the people who use
 these services, the teams who deliver them, and partners working with the
 service.
 
@@ -25,8 +25,8 @@ The roadmap is organised into three horizons:
 - **Next** is what we expect to pick up soon.
 - **Later** is the direction we are setting.
 
-It is presented as a vertically stacked chronological journey — **Now**, then
-**Next**, then **Later** — with each horizon shown as a full-width section and a
+It is presented as a vertically stacked chronological journey: **Now**, then
+**Next**, then **Later**, with each horizon shown as a full-width section and a
 responsive grid of cards inside it, rather than as side-by-side columns. This is
 the canonical roadmap presentation pattern for the project; see the
 [Roadmap Presentation Standard](./docs/ROADMAP_PRESENTATION_STANDARD.md) and
@@ -85,9 +85,7 @@ npm run format   # format with Prettier
 
 The site deploys to GitHub Pages from `main` via the workflow in
 [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml). The Vite base
-path is set to `./` (relative), so built asset URLs resolve relative to
-`index.html` wherever the site is served — both the GitHub Pages project site
-(`…github.io/GMS-Roadmap/`) and any other host or fork root.
+path is set to `/GMS-Roadmap/` for the GitHub Pages project site.
 
 > **Repository setting required:** in **Settings -> Pages**, set the source to
 > **GitHub Actions** for deployments to run.

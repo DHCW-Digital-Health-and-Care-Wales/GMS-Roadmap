@@ -10,10 +10,9 @@
 export type Horizon = 'now' | 'next' | 'later';
 export type ItemStatus = 'exploring' | 'in-progress' | 'shipped';
 
-/** Every piece of display text is language-keyed. */
 export interface Localised {
-  cy: string; // Welsh
-  en: string; // English
+  cy: string;
+  en: string;
 }
 
 export interface Category {
@@ -40,9 +39,6 @@ export interface RoadmapItem {
   updated: string;
 }
 
-/**
- * A single item in a delivered work section.
- */
 export interface DeliveredItem {
   id: string;
   title: Localised;
@@ -51,14 +47,10 @@ export interface DeliveredItem {
   capabilities?: { label: string; items: string[] };
 }
 
-/**
- * A delivered work section (Recently delivered / Other work this year / Not doing right now).
- */
 export interface DeliveredSectionData {
   id: string;
   heading: Localised;
   description: Localised;
-  /** Visible on-page placeholder shown when items is empty. */
   placeholder: Localised;
   items: DeliveredItem[];
 }
@@ -83,27 +75,24 @@ export interface Roadmap {
   items: RoadmapItem[];
   recentlyDelivered: DeliveredSectionData;
   otherDelivered: DeliveredSectionData;
-  notDoingNow: DeliveredSectionData;
+  notRightNow: DeliveredSectionData;
 }
 
 const TODO_CY = '';
-const UPDATED_AT = '2026-08-26';
+const UPDATED_AT = '2026-09-22';
 const CATEGORY_ID = 'general-medical-services';
 
 const localised = (en: string): Localised => ({ cy: TODO_CY, en });
 
 export const roadmap: Roadmap = {
   meta: {
-    title: localised('DHCW General Medical Services roadmap'),
-
+    title: localised('General Medical Services roadmap'),
     vision: localised(
       'General Practice in Wales is supported by safe, reliable and user-centred digital services that enable high-quality patient care.',
     ),
-
     serviceDescription: localised(
-      'Digital services that enable General Practice systems across Wales to securely exchange information with NHS Wales services, supporting safe, efficient patient care.',
+      'Digital services that provide the foundation for safe, efficient and coordinated primary care across Wales, enabling healthcare professionals to access accurate patient records, undertake consultations, prescribe, receive and review test results and manage referrals safely and efficiently.',
     ),
-
     intro: localised(
       "This roadmap shows what we're working on now, what's coming next and the direction we expect to take later.",
     ),
@@ -115,7 +104,7 @@ export const roadmap: Roadmap = {
     reviewNote: localised(
       'We update this roadmap as plans develop and we learn from delivery.',
     ),
-    statusLabel: 'Draft for Discussion',
+    statusLabel: 'Beta',
     betaNote: localised(
       'We are trialling a public beta of our roadmap here. Our long-term goal is to make these available through our website.',
     ),
@@ -151,14 +140,13 @@ export const roadmap: Roadmap = {
       name: localised('General Medical Services'),
       headline: localised('Now, Next and Later for General Medical Services'),
       description: localised(
-        "This roadmap is a simple view of the work shaping General Medical Services in Wales. Each card shows a change we're working on now, planning to take on next, or working towards later.",
+        'This roadmap shows how General Medical Services is improving digital services for safe, efficient and coordinated primary care across Wales.',
       ),
       accent: '#325083',
     },
   ],
 
   items: [
-    // NOW
     {
       id: 'gp-discovery-roadmap',
       title: localised('Completing GP discovery and shaping a co-designed digital roadmap'),
@@ -173,58 +161,6 @@ export const roadmap: Roadmap = {
       updated: UPDATED_AT,
     },
     {
-      id: 'wccg-gptr-tech-deep-dive',
-      title: localised('Progressing the WCCG and GPTR technology deep dive'),
-      summary: localised(
-        'Progressing the WCCG and GPTR technology deep dive across architecture, integrations, hosting, technical debt and operational risks.',
-      ),
-      categoryId: CATEGORY_ID,
-      horizon: 'now',
-      status: 'in-progress',
-      outcome:
-        'Modernisation opportunities and service resilience needs are better understood.',
-      updated: UPDATED_AT,
-    },
-    {
-      id: 'wccg-upgrade-decision',
-      title: localised('Working through the WCCG upgrade decision'),
-      summary: localised(
-        'Working through the WCCG upgrade decision, including plan, cost and product direction.',
-      ),
-      categoryId: CATEGORY_ID,
-      horizon: 'now',
-      status: 'in-progress',
-      outcome:
-        'An options appraisal is produced, future investment and enhancement choices are better informed.',
-      updated: UPDATED_AT,
-    },
-    {
-      id: 'archive-database-retention',
-      title: localised('Defining archive database retention requirements'),
-      summary: localised(
-        'Defining archive database retention requirements.',
-      ),
-      categoryId: CATEGORY_ID,
-      horizon: 'now',
-      status: 'in-progress',
-      outcome:
-        'Disk space, service stability and compliance needs are managed more effectively.',
-      updated: UPDATED_AT,
-    },
-    {
-      id: 'user-discovery-and-research',
-      title: localised('Running user discovery and user research across products'),
-      summary: localised(
-        'Running user discovery and user research across GPTR, WCCG, GP Portal and GP Links.',
-      ),
-      categoryId: CATEGORY_ID,
-      horizon: 'now',
-      status: 'in-progress',
-      outcome:
-        'Strategic directions for the products are shaped by service evidence and user need.',
-      updated: UPDATED_AT,
-    },
-    {
       id: 'active-gms-delivery-priorities',
       title: localised('Supporting active GMS delivery priorities'),
       summary: localised(
@@ -234,100 +170,120 @@ export const roadmap: Roadmap = {
       horizon: 'now',
       status: 'in-progress',
       outcome:
-        'Key service, procurement and engagement priorities keep moving while discovery work progresses.',
+        'Key service improvements, procurement and engagement priorities progressed.',
+      updated: UPDATED_AT,
+    },
+    {
+      id: 'wccg-gptr-tech-deep-dive',
+      title: localised('Progressing the WCCG and GPTR technology deep dive'),
+      summary: localised(
+        'Progressing the WCCG and GPTR technology deep dive across architecture, integrations, hosting, technical debt and operational risks.',
+      ),
+      categoryId: CATEGORY_ID,
+      horizon: 'now',
+      status: 'in-progress',
+      outcome: 'Better understanding of the architecture state of the products.',
+      updated: UPDATED_AT,
+    },
+    {
+      id: 'wgpr-transition-project',
+      title: localised('WGPR Transition Project'),
+      summary: localised(
+        'Looking at the transfer of the support model to the primary care services team and creating a support tool to facilitate a smooth transition.',
+      ),
+      categoryId: CATEGORY_ID,
+      horizon: 'now',
+      status: 'in-progress',
+      outcome:
+        'Review governance model and product ownership around the product and ensure the support tool is developed to aid the transition.',
+      updated: UPDATED_AT,
+    },
+    {
+      id: 'application-server-upgrades',
+      title: localised('Application Server Upgrades for WCCG and GPTR'),
+      summary: localised(
+        'Application Server Upgrades for WCCG and GPTR from 2016 to 2022.',
+      ),
+      categoryId: CATEGORY_ID,
+      horizon: 'now',
+      status: 'in-progress',
+      outcome:
+        'Keeping the servers in line with the supported environment as the 2016 servers will go out of support soon.',
+      updated: UPDATED_AT,
+    },
+    {
+      id: 'eps-digital-signing',
+      title: localised(
+        'Product enhancements to support digital signing of electronic prescriptions service',
+      ),
+      summary: localised(
+        'Product enhancements to support digital signing of electronic prescriptions service.',
+      ),
+      categoryId: CATEGORY_ID,
+      horizon: 'now',
+      status: 'in-progress',
+      outcome: 'Product updates required to enable continued use of EPS.',
+      updated: UPDATED_AT,
+    },
+    {
+      id: 'wccg-gptr-infrastructure-upgrade',
+      title: localised('Progressing WCCG and GPTR infrastructure upgrade'),
+      summary: localised(
+        'Progressing WCCG and GPTR infrastructure upgrade including VCF migration.',
+      ),
+      categoryId: CATEGORY_ID,
+      horizon: 'now',
+      status: 'in-progress',
+      outcome: 'Infrastructure enhancement.',
       updated: UPDATED_AT,
     },
 
-    // NEXT
     {
-      id: 'nhs-wales-app-digital-access',
-      title: localised('Enabling digital access through NHS Wales App options'),
+      id: 'user-discovery-and-research',
+      title: localised('Running user discovery and user research across GPTR, WCCG and GP Portal'),
       summary: localised(
-        'Enabling access to immunisations, problems and test results through NHS Wales App options.',
+        'Running user discovery and user research across GPTR, WCCG and GP Portal.',
       ),
       categoryId: CATEGORY_ID,
       horizon: 'next',
       status: 'exploring',
       outcome:
-        'Contract reform priorities can progress with EMIS/Enlivio and patients can benefit from broader digital access to GP-held information.',
+        'Strategic directions for the products are shaped by service evidence and user need.',
       updated: UPDATED_AT,
     },
     {
-      id: 'avt-framework-call-off',
-      title: localised('Moving AVT into framework and call-off process'),
-      summary: localised(
-        'Moving AVT from procurement into a framework and call-off process.',
-      ),
+      id: 'avt-framework-evaluation',
+      title: localised('Going through procurement evaluation for AVT framework'),
+      summary: localised('Going through procurement evaluation for AVT framework.'),
       categoryId: CATEGORY_ID,
       horizon: 'next',
       status: 'exploring',
       outcome:
-        'Practices have a clearer route to adopt ambient voice technology solutions from the framework.',
+        'Evaluation of tenders will be completed and approvals progressed with senior stakeholders.',
       updated: UPDATED_AT,
     },
     {
-      id: 'emis-clinical-services-integrations',
-      title: localised('Testing national integrations with EMIS Clinical Services'),
+      id: 'national-integrations-and-cluster-service-design',
+      title: localised('Testing national integrations and undertaking cluster service design work'),
       summary: localised(
-        'Progressing the testing of national integrations with EMIS Clinical Services and undertake cluster evaluation work.',
+        'Progressing the testing of national integrations with EMIS Clinical Services and undertaking cluster service design work to inform a national recommendation.',
       ),
       categoryId: CATEGORY_ID,
       horizon: 'next',
       status: 'exploring',
       outcome:
-        'The team can understand how cluster models should be configured, assured and supported.',
+        'The team can understand how cluster models should be configured, assured and supported if we were to scale this to adopt a national approach.',
       updated: UPDATED_AT,
     },
     {
-      id: 'national-cluster-digital-service-blueprint',
-      title: localised('Developing the national cluster digital service blueprint'),
-      summary: localised(
-        'Developing the national cluster digital service blueprint.',
-      ),
+      id: 'gptr-memory-leak',
+      title: localised('Addressing the GPTR memory leak issue'),
+      summary: localised('Addressing the GPTR memory leak issue.'),
       categoryId: CATEGORY_ID,
       horizon: 'next',
       status: 'exploring',
       outcome:
-        'Roles, pathways, configuration and onboarding are clearer for delivery teams and stakeholders.',
-      updated: UPDATED_AT,
-    },
-    {
-      id: 'wccg-gptr-migration',
-      title: localised('Progressing WCCG and GPTR migration work'),
-      summary: localised(
-        'Progressing WCCG and GPTR migration work, including VCF migration, UAT and production cloud migration planning.',
-      ),
-      categoryId: CATEGORY_ID,
-      horizon: 'next',
-      status: 'exploring',
-      outcome:
-        'Migration activity is better sequenced, risk-managed and ready for delivery.',
-      updated: UPDATED_AT,
-    },
-    {
-      id: 'wccg-enhancements',
-      title: localised('Assessing and preparing WCCG enhancements'),
-      summary: localised(
-        'Assessing and preparing WCCG enhancements including clinical notes, BCU ePOC replacement, SBU ECHO reports, Velindre hospital-initiated referrals and fixed manual referral fields.',
-      ),
-      categoryId: CATEGORY_ID,
-      horizon: 'next',
-      status: 'exploring',
-      outcome:
-        'High-value enhancements are understood, prioritised and prepared for delivery decisions.',
-      updated: UPDATED_AT,
-    },
-    {
-      id: 'gptr-improvements',
-      title: localised('Progressing GPTR improvements'),
-      summary: localised(
-        'Progressing GPTR improvements such as editable pathology requests before sample collection.',
-      ),
-      categoryId: CATEGORY_ID,
-      horizon: 'next',
-      status: 'exploring',
-      outcome:
-        'Users have more flexibility to correct requests earlier and reduce avoidable rework.',
+        'Improved GPTR stability and reduced reliance on scheduled application pool recycling.',
       updated: UPDATED_AT,
     },
     {
@@ -344,25 +300,79 @@ export const roadmap: Roadmap = {
       updated: UPDATED_AT,
     },
 
-    // LATER
     {
-      id: 'gp2gp-cross-border-discovery',
-      title: localised('Exploring GP2GP cross-border discovery'),
+      id: 'referrals-and-test-requesting-strategy',
+      title: localised('Product strategy for referrals and test requesting in Primary Care'),
+      summary: localised('Product strategy for referrals and test requesting in Primary Care.'),
+      categoryId: CATEGORY_ID,
+      horizon: 'later',
+      status: 'exploring',
+      updated: UPDATED_AT,
+    },
+    {
+      id: 'nhs-wales-app-digital-access',
+      title: localised('Enabling access to immunisations, problems and test results through NHS Wales App'),
       summary: localised(
-        'Exploring GP2GP cross-border discovery.',
+        'Enabling access to immunisations, problems and test results through NHS Wales App.',
       ),
       categoryId: CATEGORY_ID,
       horizon: 'later',
       status: 'exploring',
       outcome:
-        'The team can understand options for improving electronic transfer of GP patient records.',
+        'Contract reform priorities can progress with EMIS/Enlivio and patients can benefit from broader digital access to GP-held information.',
+      updated: UPDATED_AT,
+    },
+    {
+      id: 'avt-framework-call-off',
+      title: localised('Publishing AVT framework and call-off process live for practices'),
+      summary: localised('Publish AVT framework and call-off process live for practices.'),
+      categoryId: CATEGORY_ID,
+      horizon: 'later',
+      status: 'exploring',
+      outcome:
+        'Practices have a clearer route to adopt ambient voice technology solutions from the framework.',
+      updated: UPDATED_AT,
+    },
+    {
+      id: 'wccg-gptr-cloud-migration',
+      title: localised('Progressing WCCG and GPTR infrastructure upgrade'),
+      summary: localised(
+        'Progressing WCCG and GPTR infrastructure upgrade including UAT and production cloud migration planning.',
+      ),
+      categoryId: CATEGORY_ID,
+      horizon: 'later',
+      status: 'exploring',
+      outcome:
+        'Infrastructure enhancement to align with the organisation cloud first strategy.',
+      updated: UPDATED_AT,
+    },
+    {
+      id: 'national-cluster-digital-service-blueprint',
+      title: localised('Developing the national cluster digital service blueprint'),
+      summary: localised('Developing the national cluster digital service blueprint.'),
+      categoryId: CATEGORY_ID,
+      horizon: 'later',
+      status: 'exploring',
+      outcome:
+        'Roles, pathways, configuration and onboarding are clearer for delivery teams and stakeholders.',
+      updated: UPDATED_AT,
+    },
+    {
+      id: 'aws-phase-two-migration',
+      title: localised('AWS Phase 2 migration of the data centres, including shared services'),
+      summary: localised(
+        'AWS Phase 2 migration of the data centres, including shared services (11 services).',
+      ),
+      categoryId: CATEGORY_ID,
+      horizon: 'later',
+      status: 'exploring',
       updated: UPDATED_AT,
     },
     {
       id: 'emis-web-optum-roadmap',
       title: localised('Considering future EMIS Web and Optum roadmap items'),
       summary: localised(
-        'Considering future EMIS Web and Optum roadmap items such as EMIS-X Browser, EMIS-X Companion App, Desktop Integration API, and Dynamic Templates.',
+        'Considering future EMIS Web and Optum roadmap items such as EMIS-X Capabilities and Resource Publisher.',
       ),
       categoryId: CATEGORY_ID,
       horizon: 'later',
@@ -384,32 +394,6 @@ export const roadmap: Roadmap = {
         'Future app opportunities are assessed against user need, strategic fit and delivery readiness.',
       updated: UPDATED_AT,
     },
-    {
-      id: 'safety-and-resilience-items',
-      title: localised('Considering future safety and resilience items'),
-      summary: localised(
-        'Considering future safety and resilience items including National Record Locator, Panic Button 2.0, reasonable adjustment patient flags and GP2GP transport or failure rate improvements.',
-      ),
-      categoryId: CATEGORY_ID,
-      horizon: 'later',
-      status: 'exploring',
-      outcome:
-        'Future resilience and safety improvements can be assessed and sequenced in line with service risk.',
-      updated: UPDATED_AT,
-    },
-    {
-      id: 'future-eps-priorities',
-      title: localised('Reviewing future electronic prescribing priorities'),
-      summary: localised(
-        'Continuing to review future electronic prescribing priorities such as post-dated scripts, CIS2 phase 2 and other EPS priorities where dependencies, funding and strategic fit are clear.',
-      ),
-      categoryId: CATEGORY_ID,
-      horizon: 'later',
-      status: 'exploring',
-      outcome:
-        'Future EPS work is considered in a way that balances value, readiness and delivery constraints.',
-      updated: UPDATED_AT,
-    },
   ],
 
   recentlyDelivered: {
@@ -423,17 +407,10 @@ export const roadmap: Roadmap = {
     ),
     items: [
       {
-        id: 'aws-pilot-2-completion',
-        title: localised('AWS Pilot 2 completion'),
+        id: 'aws-phase-one-practice-migrations',
+        title: localised('AWS Phase 1 completion of the practice migrations'),
         summary: localised(
-          'AWS Pilot 2 completion, supporting the wider move towards modernised hosting foundations.',
-        ),
-      },
-      {
-        id: 'eps-sha-256-signing',
-        title: localised('EPS SHA-256 signing test work completed'),
-        summary: localised(
-          'EPS SHA-256 signing test work completed for the pilots, supporting safer electronic prescribing foundations.',
+          'AWS Phase 1 completion of the practice migrations, supporting the wider move towards modernised hosting foundations.',
         ),
       },
       {
@@ -451,10 +428,17 @@ export const roadmap: Roadmap = {
         ),
       },
       {
-        id: 'menb-writeback-to-emis',
-        title: localised('MenB writeback to EMIS'),
+        id: 'vaccination-records-writeback',
+        title: localised('Vaccination records shared back into GP systems'),
         summary: localised(
-          'MenB writeback to EMIS successfully implemented, supporting immunisation writeback activity.',
+          'Current and upcoming vaccination records can now be shared back into GP systems, supporting more complete and up-to-date patient records.',
+        ),
+      },
+      {
+        id: 'archive-database-retention',
+        title: localised('Defining archive database retention requirements'),
+        summary: localised(
+          'Defining archive database retention requirements.',
         ),
       },
     ],
@@ -462,7 +446,7 @@ export const roadmap: Roadmap = {
 
   otherDelivered: {
     id: 'other-delivered',
-    heading: localised('Other work we have delivered this year'),
+    heading: localised('Other work delivered this year'),
     description: localised(
       'A broader view of the delivery this year that sits outside the main roadmap horizons.',
     ),
@@ -480,11 +464,11 @@ export const roadmap: Roadmap = {
     ],
   },
 
-  notDoingNow: {
-    id: 'not-doing-now',
-    heading: localised('Not doing right now'),
+  notRightNow: {
+    id: 'not-right-now',
+    heading: localised('Not now'),
     description: localised(
-      'Being clear about what we’re not doing keeps the focus where it matters.',
+      "Being clear about what we're not doing keeps the focus where it matters.",
     ),
     placeholder: localised(
       'Content to be confirmed. This section will explain what is out of scope for now once reviewed and agreed with the service team.',
