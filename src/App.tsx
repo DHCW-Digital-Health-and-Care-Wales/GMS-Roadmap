@@ -39,7 +39,7 @@ export default function App() {
         {/* 3. Now / Next / Later explainer */}
         <HorizonExplainer roadmap={roadmap} />
 
-        {/* 4. Recently delivered — immediately before the Now horizon */}
+        {/* 4. Recently delivered, immediately before the Now horizon */}
         <DeliveredSection section={roadmap.recentlyDelivered} />
 
         {/* 5. Now / Next / Later roadmap horizons */}
@@ -58,11 +58,11 @@ export default function App() {
           </div>
         </div>
 
-        {/* 6. Other work we have delivered this year — last roadmap content section */}
+        {/* 6. Other work we have delivered this year, the last roadmap content section */}
         <DeliveredSection section={roadmap.otherDelivered} />
 
-        {/* 7. Not doing right now */}
-        <DeliveredSection section={roadmap.notDoingNow} />
+        {/* 7. Not now */}
+        <DeliveredSection section={roadmap.notRightNow} />
 
         <AccessibilityStatement />
         <PrivacyNote />
