@@ -43,6 +43,7 @@ export interface DeliveredItem {
   id: string;
   title: Localised;
   summary: Localised;
+  outcome?: Localised;
   metric?: string;
   capabilities?: { label: string; items: string[] };
 }
@@ -253,8 +254,8 @@ export const roadmap: Roadmap = {
     },
     {
       id: 'avt-framework-evaluation',
-      title: localised('Going through procurement evaluation for AVT framework'),
-      summary: localised('Going through procurement evaluation for AVT framework.'),
+      title: localised('Procurement evaluation for the AVT framework'),
+      summary: localised('Procurement evaluation for the AVT framework.'),
       categoryId: CATEGORY_ID,
       horizon: 'next',
       status: 'exploring',
@@ -324,8 +325,10 @@ export const roadmap: Roadmap = {
     },
     {
       id: 'avt-framework-call-off',
-      title: localised('Publishing AVT framework and call-off process live for practices'),
-      summary: localised('Publish AVT framework and call-off process live for practices.'),
+      title: localised('Publishing the AVT framework and implementing the call-off process for practices'),
+      summary: localised(
+        'Publish the AVT framework and implement the call-off process for practices.',
+      ),
       categoryId: CATEGORY_ID,
       horizon: 'later',
       status: 'exploring',
@@ -440,6 +443,9 @@ export const roadmap: Roadmap = {
         summary: localised(
           'Defining archive database retention requirements.',
         ),
+        outcome: localised(
+          'Disk space, service stability and compliance needs are managed more effectively.',
+        ),
       },
     ],
   },
@@ -470,9 +476,15 @@ export const roadmap: Roadmap = {
     description: localised(
       "Being clear about what we're not doing keeps the focus where it matters.",
     ),
-    placeholder: localised(
-      'Content to be confirmed. This section will explain what is out of scope for now once reviewed and agreed with the service team.',
-    ),
-    items: [],
+    placeholder: localised(''),
+    items: [
+      {
+        id: 'unplanned-work-outside-gms-priorities',
+        title: localised('Unplanned work outside current GMS priorities'),
+        summary: localised(
+          'We are not taking on unplanned work that is not linked to current GMS priorities, so the team can stay focused on the commitments in this roadmap.',
+        ),
+      },
+    ],
   },
 };
